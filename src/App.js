@@ -23,7 +23,7 @@ const StyledButton = styled.button`
   background-color: #ffffff;
   font-weight: bold;
   color: #000000;
-  width: 100px;
+  width: 200px;
   cursor: pointer;
   box-shadow: 0px 6px 0px -2px rgba(250, 250, 250, 0.3);
   :active {
@@ -190,13 +190,13 @@ function App() {
   return (
     <s.Screen style={{ backgroundColor: "var(--black)" }}>
 
-<s.Container flex={1} ai={"center"} style={{ padding: 24 }}>
+      <s.Container flex={1} ai={"center"} style={{ padding: 24 }}>
         <Navbar>
           <a href="/" className="logo">
             <img src="https://carbonstd.com/img/logo.png" alt="Logo" />
           </a>
           <MenuToggle className="menutoggle" onClick={() => setMenuOpen(!menuOpen)}>
-           ☰
+            ☰
           </MenuToggle>
           <div className="nav-center">
             <NavLinks open={menuOpen}>
@@ -215,12 +215,15 @@ function App() {
           </div>
         </Navbar>
       </s.Container>
-      
+
       <s.Container flex={1} ai={"center"} style={{ padding: 24 }}>
-      <s.TextTitle style={{ textAlign: "center", fontSize: 28, fontWeight: "bold" }}>
-  Carbon.Std -<br />
-  Sustainability Bonds + NFT = ReFi.
-</s.TextTitle>
+        <s.TextTitle style={{ textAlign: "center", fontSize: 28, fontWeight: "bold" }}>
+          Carbon.Std Sustainability<br />
+          Bonds + NFT = ReFi.
+        </s.TextTitle><br></br>
+        <s.TextDescription style={{ textAlign: "center", fontSize: 9 }}>
+        1000 unique collectible characters with proof of ownership stored on the Ethereum blockchain.
+          </s.TextDescription>
         <s.SpacerMedium />
         <ResponsiveWrapper flex={1} style={{ padding: 24 }}>
           <s.Container flex={1} jc={"center"} ai={"center"}>
@@ -270,7 +273,7 @@ function App() {
                       dispatch(connect());
                       getData();
                     }}>
-                      CONNECT
+                      CONNECT WALLET
                     </StyledButton>
                     {blockchain.errorMsg !== "" ? (
                       <>
