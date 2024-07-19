@@ -81,6 +81,7 @@ const NavLinks = styled.ul`
     @media (max-width: 768px) {
       margin: 15px 0;
     }
+
   }
 
   a {
@@ -105,6 +106,16 @@ const Navbar = styled.header`
     img {
       height: 20px;
     }
+  }
+
+
+  .menutoggle {
+    font-size: 25px;
+    display: flex;
+    margin-left: 50px;
+    justify-content: right;
+    color: #fff;
+
   }
 
   .nav-center {
@@ -180,8 +191,8 @@ function App() {
           <a href="/" className="logo">
             <img src="https://carbonstd.com/img/logo.png" alt="Logo" />
           </a>
-          <MenuToggle onClick={() => setMenuOpen(!menuOpen)}>
-            ☰
+          <MenuToggle className="menutoggle" onClick={() => setMenuOpen(!menuOpen)}>
+           ☰
           </MenuToggle>
           <div className="nav-center">
             <NavLinks open={menuOpen}>
