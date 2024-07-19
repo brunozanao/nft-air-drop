@@ -199,7 +199,7 @@ function App() {
             ☰
           </MenuToggle>
           <div className="nav-center">
-            <NavLinks open={menuOpen}>
+            <NavLinks open={menuOpen} style={{ fontSize: 20 }}>
               <li><a href="">About</a></li>
               <li><a href="">Collection</a></li>
               <li><a href="">FAQs</a></li>
@@ -217,12 +217,12 @@ function App() {
       </s.Container>
 
       <s.Container flex={1} ai={"center"} style={{ padding: 24 }}>
-        <s.TextTitle style={{ textAlign: "center", fontSize: 28, fontWeight: "bold" }}>
+        <s.TextTitle style={{ textAlign: "center", fontSize: 56, fontWeight: "bold" }}>
           Carbon.Std Sustainability<br />
           Bonds + NFT = ReFi.
         </s.TextTitle><br></br>
-        <s.TextDescription style={{ textAlign: "center", fontSize: 9 }}>
-        1000 unique collectible characters with proof of ownership stored on the Ethereum blockchain.
+        <s.TextDescription style={{ textAlign: "center", fontSize: 22 }}>
+        1000 unique collectible characters with proof <br />of ownership stored on the Ethereum blockchain.
           </s.TextDescription>
         <s.SpacerMedium />
         <ResponsiveWrapper flex={1} style={{ padding: 24 }}>
