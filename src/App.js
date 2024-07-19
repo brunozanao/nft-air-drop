@@ -111,10 +111,14 @@ const Navbar = styled.header`
 
   .menutoggle {
     font-size: 25px;
-    display: flex;
+    display: none;
     margin-left: 50px;
     justify-content: right;
     color: #fff;
+
+    @media (max-width: 768px) {
+    display: block;
+  }
 
   }
 
@@ -213,9 +217,10 @@ function App() {
       </s.Container>
       
       <s.Container flex={1} ai={"center"} style={{ padding: 24 }}>
-        <s.TextTitle style={{ textAlign: "center", fontSize: 28, fontWeight: "bold" }}>
-          Carbon.Std - Sustainability Bonds + NFT = ReFi.
-        </s.TextTitle>
+      <s.TextTitle style={{ textAlign: "center", fontSize: 28, fontWeight: "bold" }}>
+  Carbon.Std -<br />
+  Sustainability Bonds + NFT = ReFi.
+</s.TextTitle>
         <s.SpacerMedium />
         <ResponsiveWrapper flex={1} style={{ padding: 24 }}>
           <s.Container flex={1} jc={"center"} ai={"center"}>
