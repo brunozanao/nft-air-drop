@@ -305,13 +305,13 @@ function App() {
         </ResponsiveWrapper>
         <s.SpacerSmall />
         <s.Container jc={"center"} ai={"center"} style={{ width: "70%" }}>
-          <s.TextDescription style={{ textAlign: "center", fontSize: 9 }}>
+          <s.TextDescription style={{ textAlign: "center", fontSize: 16 }}>
             Please make sure you are connected to the right network (Polygon Mainnet) and the correct address. Please note: Once you make the purchase, you cannot undo this action.
           </s.TextDescription>
           <s.SpacerSmall />
-          <s.TextDescription style={{ textAlign: "center", fontSize: 9 }}>
+          {/* <s.TextDescription style={{ textAlign: "center", fontSize: 18 }}>
             We have set the gas limit to 285000 for the contract to successfully mint your NFT. We recommend that you don't change the gas limit.
-          </s.TextDescription>
+          </s.TextDescription> */}
         </s.Container>
       </s.Container>
     </s.Screen>
