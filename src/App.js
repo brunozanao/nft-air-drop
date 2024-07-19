@@ -44,6 +44,7 @@ const ResponsiveWrapper = styled.div`
 `;
 
 const StyledImg = styled.img`
+border-radius: 25px;
   width: 200px;
   height: 200px;
   @media (min-width: 767px) {
