@@ -188,10 +188,10 @@ function App() {
   }, [blockchain.account]);
 
   return (
-    <s.Screen style={{ backgroundColor: "var(--black)" }}>
+    <s.Screen style={{ backgroundColor: "#111" }}>
 
-      <s.Container flex={1} ai={"center"} style={{ padding: 24 }}>
-        <Navbar>
+      <s.Container flex={1} ai={"center"} style={{ padding: 24 }} >
+        <Navbar style={{ backgroundColor: "#111" }}>
           <a href="/" className="logo">
             <img src="https://carbonstd.com/img/logo.png" alt="Logo" />
           </a>
