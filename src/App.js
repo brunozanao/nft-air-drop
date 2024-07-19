@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
@@ -6,27 +6,32 @@ import * as s from "./styles/globalStyles";
 import styled from "styled-components";
 import i1 from "./assets/images/1.jpg";
 
-export const StyledButton = styled.button`
+const MenuToggle = styled.div`
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+  
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
+const StyledButton = styled.button`
   padding: 10px;
   border-radius: 50px;
   border: none;
   background-color: #ffffff;
-  padding: 10px;
   font-weight: bold;
   color: #000000;
   width: 100px;
   cursor: pointer;
   box-shadow: 0px 6px 0px -2px rgba(250, 250, 250, 0.3);
-  -webkit-box-shadow: 0px 6px 0px -2px rgba(250, 250, 250, 0.3);
-  -moz-box-shadow: 0px 6px 0px -2px rgba(250, 250, 250, 0.3);
   :active {
     box-shadow: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
   }
 `;
 
-export const ResponsiveWrapper = styled.div`
+const ResponsiveWrapper = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -38,7 +43,7 @@ export const ResponsiveWrapper = styled.div`
   }
 `;
 
-export const StyledImg = styled.img`
+const StyledImg = styled.img`
   width: 200px;
   height: 200px;
   @media (min-width: 767px) {
@@ -49,12 +54,87 @@ export const StyledImg = styled.img`
   transition: height 0.5s;
 `;
 
+const NavLinks = styled.ul`
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+
+  @media (max-width: 768px) {
+    display: ${({ open }) => (open ? "block" : "none")};
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    z-index: 1;
+  }
+
+  li {
+    margin: 0 10px;
+
+    @media (max-width: 768px) {
+      margin: 15px 0;
+    }
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+`;
+
+const Navbar = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 24px;
+  background-color: #000;
+  position: relative;
+  
+  .logo {
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 20px;
+    }
+  }
+
+  .nav-center {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+  }
+
+  .social-links {
+    display: flex;
+    align-items: center;
+
+    a {
+      margin-left: 10px;
+    }
+
+    img {
+      height: 24px;
+      width: 24px;
+    }
+  }
+`;
+
 function App() {
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
   const [feedback, setFeedback] = useState("Maybe it's your lucky day.");
   const [claimingNft, setClaimingNft] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const claimNFTs = (_amount) => {
     if (_amount <= 0) {
@@ -65,8 +145,6 @@ function App() {
     blockchain.smartContract.methods
       .mint(blockchain.account, _amount)
       .send({
-        // gasLimit: "285000",
-        // to: "0x827acb09a2dc20e39c9aad7f7190d9bc53534192",
         from: blockchain.account,
         value: blockchain.web3.utils.toWei((100 * _amount).toString(), "ether"),
       })
@@ -96,10 +174,35 @@ function App() {
 
   return (
     <s.Screen style={{ backgroundColor: "var(--black)" }}>
+
+<s.Container flex={1} ai={"center"} style={{ padding: 24 }}>
+        <Navbar>
+          <a href="/" className="logo">
+            <img src="https://carbonstd.com/img/logo.png" alt="Logo" />
+          </a>
+          <MenuToggle onClick={() => setMenuOpen(!menuOpen)}>
+            ☰
+          </MenuToggle>
+          <div className="nav-center">
+            <NavLinks open={menuOpen}>
+              <li><a href="">About</a></li>
+              <li><a href="">Collection</a></li>
+              <li><a href="">FAQs</a></li>
+            </NavLinks>
+          </div>
+          <div className="social-links">
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+              <img src="https://watersmemorial.stockcapital.com.br/wp-content/uploads/2024/07/twitter.png" alt="" />
+            </a>
+            <a href="https://discord.com" target="_blank" rel="noopener noreferrer">
+              <img src="https://watersmemorial.stockcapital.com.br/wp-content/uploads/2024/07/discord.png" alt="" />
+            </a>
+          </div>
+        </Navbar>
+      </s.Container>
+      
       <s.Container flex={1} ai={"center"} style={{ padding: 24 }}>
-        <s.TextTitle
-          style={{ textAlign: "center", fontSize: 28, fontWeight: "bold" }}
-        >
+        <s.TextTitle style={{ textAlign: "center", fontSize: 28, fontWeight: "bold" }}>
           Carbon.Std - Sustainability Bonds + NFT = ReFi.
         </s.TextTitle>
         <s.SpacerMedium />
@@ -107,20 +210,13 @@ function App() {
           <s.Container flex={1} jc={"center"} ai={"center"}>
             <StyledImg alt={"example"} src={i1} />
             <s.SpacerMedium />
-            <s.TextTitle
-              style={{ textAlign: "center", fontSize: 35, fontWeight: "bold" }}
-            >
+            <s.TextTitle style={{ textAlign: "center", fontSize: 35, fontWeight: "bold" }}>
               {data.totalSupply}/1000
             </s.TextTitle>
           </s.Container>
           <s.SpacerMedium />
-          <s.Container
-            flex={1}
-            jc={"center"}
-            ai={"center"}
-            style={{ backgroundColor: "#383838", padding: 24 }}
-          >
-            {Number(data.totalSupply) == 1000 ? (
+          <s.Container flex={1} jc={"center"} ai={"center"} style={{ backgroundColor: "#383838", padding: 24 }}>
+            {Number(data.totalSupply) === 1000 ? (
               <>
                 <s.TextTitle style={{ textAlign: "center" }}>
                   The sale has ended.
@@ -128,10 +224,7 @@ function App() {
                 <s.SpacerSmall />
                 <s.TextDescription style={{ textAlign: "center" }}>
                   You can still find Carbon.Std on{" "}
-                  <a
-                    target={"_blank"}
-                    href={"https://opensea.io/CarbonStd"}
-                  >
+                  <a target={"_blank"} href={"https://opensea.io/CarbonStd"}>
                     Opensea.io
                   </a>
                 </s.TextDescription>
@@ -150,20 +243,17 @@ function App() {
                   {feedback}
                 </s.TextDescription>
                 <s.SpacerMedium />
-                {blockchain.account === "" ||
-                blockchain.smartContract === null ? (
+                {blockchain.account === "" || blockchain.smartContract === null ? (
                   <s.Container ai={"center"} jc={"center"}>
                     <s.TextDescription style={{ textAlign: "center" }}>
                       Connect to the Polygon network
                     </s.TextDescription>
                     <s.SpacerSmall />
-                    <StyledButton
-                      onClick={(e) => {
-                        e.preventDefault();
-                        dispatch(connect());
-                        getData();
-                      }}
-                    >
+                    <StyledButton onClick={(e) => {
+                      e.preventDefault();
+                      dispatch(connect());
+                      getData();
+                    }}>
                       CONNECT
                     </StyledButton>
                     {blockchain.errorMsg !== "" ? (
@@ -196,14 +286,11 @@ function App() {
         <s.SpacerSmall />
         <s.Container jc={"center"} ai={"center"} style={{ width: "70%" }}>
           <s.TextDescription style={{ textAlign: "center", fontSize: 9 }}>
-            Please make sure you are connected to the right network (Polygon
-            Mainnet) and the correct address. Please note: Once you make the
-            purchase, you cannot undo this action.
+            Please make sure you are connected to the right network (Polygon Mainnet) and the correct address. Please note: Once you make the purchase, you cannot undo this action.
           </s.TextDescription>
           <s.SpacerSmall />
           <s.TextDescription style={{ textAlign: "center", fontSize: 9 }}>
-            We have set the gas limit to 285000 for the contract to successfully
-            mint your NFT. We recommend that you don't change the gas limit.
+            We have set the gas limit to 285000 for the contract to successfully mint your NFT. We recommend that you don't change the gas limit.
           </s.TextDescription>
         </s.Container>
       </s.Container>
