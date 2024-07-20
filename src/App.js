@@ -200,7 +200,7 @@ function App() {
             ☰
           </MenuToggle>
           <div className="nav-center">
-            <NavLinks open={menuOpen} style={{ fontSize: 20 }}>
+            <NavLinks open={menuOpen} style={{ fontSize: 20, fontWeight: "bold" }}>
               <li><a href="">About</a></li>
               <li><a href="">Collection</a></li>
               <li><a href="">FAQs</a></li>
