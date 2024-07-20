@@ -201,16 +201,17 @@ function App() {
           </MenuToggle>
           <div className="nav-center">
             <NavLinks open={menuOpen} style={{ fontSize: 20, fontWeight: "bold" }}>
-              <li><a href="">About</a></li>
-              <li><a href="">Collection</a></li>
+            <li><a href="https://carbonstd.com/" target="_blank">Carbon.Std</a></li>
+              <li><a href="https://carbonstd.gitbook.io/carbon.std" target="_blank">About</a></li>
+              <li><a href="https://opensea.io/CarbonStd" target="_blank">Collection</a></li>
               <li><a href="">FAQs</a></li>
             </NavLinks>
           </div>
           <div className="social-links">
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://x.com/carbonstd?s=21&t=nVja-RUzpdKwKqRLWJb-Jw" target="_blank" rel="noopener noreferrer">
               <img src="https://watersmemorial.stockcapital.com.br/wp-content/uploads/2024/07/twitter.png" alt="" />
             </a>
-            <a href="https://discord.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://discord.com/invite/tZmRfhbrap" target="_blank" rel="noopener noreferrer">
               <img src="https://watersmemorial.stockcapital.com.br/wp-content/uploads/2024/07/discord.png" alt="" />
             </a>
           </div>
