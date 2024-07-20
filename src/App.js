@@ -145,6 +145,10 @@ const Navbar = styled.header`
       height: 24px;
       width: 24px;
     }
+
+    img:hover {
+  opacity: 0.8;
+}
   }
 `;
 
