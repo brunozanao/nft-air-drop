@@ -204,7 +204,6 @@ function App() {
             <li><a href="https://carbonstd.com/" target="_blank">Carbon.Std</a></li>
               <li><a href="https://carbonstd.gitbook.io/carbon.std" target="_blank">About</a></li>
               <li><a href="https://opensea.io/CarbonStd" target="_blank">Collection</a></li>
-              <li><a href="">FAQs</a></li>
             </NavLinks>
           </div>
           <div className="social-links">
