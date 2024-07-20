@@ -85,8 +85,12 @@ const NavLinks = styled.ul`
 
   }
 
+  a:hover {
+     color: white;
+}
+
   a {
-    color: #fff;
+    color: #bcbcbc;
     text-decoration: none;
   }
 `;
