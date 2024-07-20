@@ -235,7 +235,7 @@ function App() {
             </s.TextTitle>
           </s.Container>
           <s.SpacerMedium />
-          <s.Container flex={1} jc={"center"} ai={"center"} style={{ backgroundColor: "#383838", padding: 24 }}>
+          <s.Container flex={1} jc={"center"} ai={"center"} style={{ backgroundColor: "#383838", borderRadius:25, padding: 24 }}>
             {Number(data.totalSupply) === 1000 ? (
               <>
                 <s.TextTitle style={{ textAlign: "center" }}>
