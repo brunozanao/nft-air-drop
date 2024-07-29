@@ -226,24 +226,102 @@ function App() {
       </s.Container>
 
       <s.Container flex={1} ai={"center"} style={{ padding: 24 }}>
-        <s.TextTitle style={{ textAlign: "center", fontSize: 48, fontWeight: "bold" }}>
-          Sustainability
+        <s.TextTitle style={{ textAlign: "center", fontSize: 56, fontWeight: "bold" }}>
+          Carbon.Std Sustainability<br />
           Bonds + NFT = ReFi.
-        </s.TextTitle>
+        </s.TextTitle><br></br>
+        <s.TextDescription style={{ textAlign: "center", fontSize: 22 }}>
+        1000 unique collectible characters with proof <br />of ownership stored on the Ethereum blockchain.
+          </s.TextDescription>
+        <s.SpacerMedium />
+        <ResponsiveWrapper flex={1} style={{ padding: 24 }}>
+          <s.Container flex={1} jc={"center"} ai={"center"}>
+            <StyledImg alt={"example"} src={i1} />
+            <s.SpacerMedium />
+            <s.TextTitle style={{ textAlign: "center", fontSize: 35, fontWeight: "bold" }}>
+              {data.totalSupply}/1000
+            </s.TextTitle>
+          </s.Container>
+          <s.SpacerMedium />
+          <s.Container flex={1} jc={"center"} ai={"center"} style={{ backgroundColor: "#383838", borderRadius:25, padding: 24 }}>
+            {Number(data.totalSupply) === 1000 ? (
+              <>
+                <s.TextTitle style={{ textAlign: "center" }}>
+                  The sale has ended.
+                </s.TextTitle>
+                <s.SpacerSmall />
+                <s.TextDescription style={{ textAlign: "center" }}>
+                  You can still find Carbon.Std on{" "}
+                  <a target={"_blank"} href={"https://opensea.io/CarbonStd"}>
+                    Opensea.io
+                  </a>
+                </s.TextDescription>
+              </>
+            ) : (
+              <>
+                <s.TextTitle style={{ textAlign: "center" }}>
+                  1 NCC costs 100 MATIC.
+                </s.TextTitle>
+                <s.SpacerXSmall />
+                <s.TextDescription style={{ textAlign: "center" }}>
+                  Excluding gas fee.
+                </s.TextDescription>
+                <s.SpacerSmall />
+                <s.TextDescription style={{ textAlign: "center" }}>
+                  {feedback}
+                </s.TextDescription>
+                <s.SpacerMedium />
+                {blockchain.account === "" || blockchain.smartContract === null ? (
+                  <s.Container ai={"center"} jc={"center"}>
+                    <s.TextDescription style={{ textAlign: "center" }}>
+                      Connect to the Polygon network
+                    </s.TextDescription>
+                    <s.SpacerSmall />
+                    <StyledButton onClick={(e) => {
+                      e.preventDefault();
+                      dispatch(connect());
+                      getData();
+                    }}>
+                      CONNECT WALLET
+                    </StyledButton>
+                    {blockchain.errorMsg !== "" ? (
+                      <>
+                        <s.SpacerSmall />
+                        <s.TextDescription style={{ textAlign: "center" }}>
+                          {blockchain.errorMsg}
+                        </s.TextDescription>
+                      </>
+                    ) : null}
+                  </s.Container>
+                ) : (
+                  <s.Container ai={"center"} jc={"center"} fd={"row"}>
+                    <StyledButton
+                      disabled={claimingNft ? 1 : 0}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        claimNFTs(1);
+                        getData();
+                      }}
+                    >
+                      {claimingNft ? "BUSY" : "BUY 1"}
+                    </StyledButton>
+                  </s.Container>
+                )}
+              </>
+            )}
+          </s.Container>
+        </ResponsiveWrapper>
+        <s.SpacerSmall />
+        <s.Container jc={"center"} ai={"center"} style={{ width: "70%" }}>
+          <s.TextDescription style={{ textAlign: "center", fontSize: 16 }}>
+            Please make sure you are connected to the right network (Polygon Mainnet) and the correct address. Please note: Once you make the purchase, you cannot undo this action.
+          </s.TextDescription>
+          <s.SpacerSmall />
+          {/* <s.TextDescription style={{ textAlign: "center", fontSize: 18 }}>
+            We have set the gas limit to 285000 for the contract to successfully mint your NFT. We recommend that you don't change the gas limit.
+          </s.TextDescription> */}
+        </s.Container>
       </s.Container>
-
-      {/* Adding the iframe */}
-    <s.Container flex={1} ai={"center"} style={{ padding: 24 }}>
-      <iframe
-        src="https://embed.ipfscdn.io/ipfs/bafybeicd3qfzelz4su7ng6n523virdsgobrc5pcbarhwqv3dj3drh645pi/?contract=0x7C92c386275E92E74e0873ee7B3F87A64e6EF017&chain=%7B%22name%22%3A%22Sepolia%22%2C%22chain%22%3A%22ETH%22%2C%22rpc%22%3A%5B%22https%3A%2F%2F11155111.rpc.thirdweb.com%2F%24%7BTHIRDWEB_API_KEY%7D%22%5D%2C%22nativeCurrency%22%3A%7B%22name%22%3A%22Sepolia+Ether%22%2C%22symbol%22%3A%22ETH%22%2C%22decimals%22%3A18%7D%2C%22shortName%22%3A%22sep%22%2C%22chainId%22%3A11155111%2C%22testnet%22%3Atrue%2C%22slug%22%3A%22sepolia%22%2C%22icon%22%3A%7B%22url%22%3A%22ipfs%3A%2F%2FQmcxZHpyJa8T4i63xqjPYrZ6tKrt55tZJpbXcjSDKuKaf9%2Fethereum%2F512.png%22%2C%22width%22%3A512%2C%22height%22%3A512%2C%22format%22%3A%22png%22%7D%7D&clientId=6de31e8939cdce4f384791dabfe296b7&theme=dark&primaryColor=teal"
-        width="600px"
-        height="600px"
-        style={{ maxWidth: "100%" }}
-        frameborder="0"
-      ></iframe>
-    </s.Container>
-
-
     </s.Screen>
   );
 }
