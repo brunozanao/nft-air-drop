@@ -209,9 +209,9 @@ function App() {
           </MenuToggle>
           <div className="nav-center">
             <NavLinks open={menuOpen} style={{ fontSize: 20, fontWeight: "bold" }}>
-            <li><a href="https://carbonstd.com/" target="_blank">Carbon.Std</a></li>
+              <li><a href="https://carbonstd.com/" target="_blank">Carbon.Std</a></li>
               <li><a href="https://carbonstd.gitbook.io/carbon.std" target="_blank">About</a></li>
-              <li><a href="https://opensea.io/CarbonStd" target="_blank">Collection</a></li>
+              <li><a href="https://testnets.opensea.io/collection/carbon-std" target="_blank">Collection</a></li>
             </NavLinks>
           </div>
           <div className="social-links">
@@ -233,15 +233,15 @@ function App() {
       </s.Container>
 
       {/* Adding the iframe */}
-    <s.Container flex={1} ai={"center"} style={{ padding: 24 }}>
-      <iframe
-        src="https://embed.ipfscdn.io/ipfs/bafybeicd3qfzelz4su7ng6n523virdsgobrc5pcbarhwqv3dj3drh645pi/?contract=0x7C92c386275E92E74e0873ee7B3F87A64e6EF017&chain=%7B%22name%22%3A%22Sepolia%22%2C%22chain%22%3A%22ETH%22%2C%22rpc%22%3A%5B%22https%3A%2F%2F11155111.rpc.thirdweb.com%2F%24%7BTHIRDWEB_API_KEY%7D%22%5D%2C%22nativeCurrency%22%3A%7B%22name%22%3A%22Sepolia+Ether%22%2C%22symbol%22%3A%22ETH%22%2C%22decimals%22%3A18%7D%2C%22shortName%22%3A%22sep%22%2C%22chainId%22%3A11155111%2C%22testnet%22%3Atrue%2C%22slug%22%3A%22sepolia%22%2C%22icon%22%3A%7B%22url%22%3A%22ipfs%3A%2F%2FQmcxZHpyJa8T4i63xqjPYrZ6tKrt55tZJpbXcjSDKuKaf9%2Fethereum%2F512.png%22%2C%22width%22%3A512%2C%22height%22%3A512%2C%22format%22%3A%22png%22%7D%7D&clientId=6de31e8939cdce4f384791dabfe296b7&theme=dark&primaryColor=teal"
-        width="600px"
-        height="600px"
-        style={{ maxWidth: "100%" }}
-        frameborder="0"
-      ></iframe>
-    </s.Container>
+      <s.Container flex={1} ai={"center"} style={{ padding: 24 }}>
+        <iframe
+          src="https://embed.ipfscdn.io/ipfs/bafybeicd3qfzelz4su7ng6n523virdsgobrc5pcbarhwqv3dj3drh645pi/?contract=0x7C92c386275E92E74e0873ee7B3F87A64e6EF017&chain=%7B%22name%22%3A%22Sepolia%22%2C%22chain%22%3A%22ETH%22%2C%22rpc%22%3A%5B%22https%3A%2F%2F11155111.rpc.thirdweb.com%2F%24%7BTHIRDWEB_API_KEY%7D%22%5D%2C%22nativeCurrency%22%3A%7B%22name%22%3A%22Sepolia+Ether%22%2C%22symbol%22%3A%22ETH%22%2C%22decimals%22%3A18%7D%2C%22shortName%22%3A%22sep%22%2C%22chainId%22%3A11155111%2C%22testnet%22%3Atrue%2C%22slug%22%3A%22sepolia%22%2C%22icon%22%3A%7B%22url%22%3A%22ipfs%3A%2F%2FQmcxZHpyJa8T4i63xqjPYrZ6tKrt55tZJpbXcjSDKuKaf9%2Fethereum%2F512.png%22%2C%22width%22%3A512%2C%22height%22%3A512%2C%22format%22%3A%22png%22%7D%7D&clientId=6de31e8939cdce4f384791dabfe296b7&theme=dark&primaryColor=teal"
+          width="600px"
+          height="600px"
+          style={{ maxWidth: "100%" }}
+          frameborder="0"
+        ></iframe>
+      </s.Container>
 
 
     </s.Screen>
